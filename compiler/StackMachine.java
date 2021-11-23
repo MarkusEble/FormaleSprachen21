@@ -17,6 +17,17 @@ public abstract class StackMachine extends StateMachineBase {
 			return m_stack.empty() && m_input.currentChar() == 0 && isFinalState();
 		}
 	}
+
+    protected char pop() {
+        char topChar = m_stack.isEmpty() ? 0 : m_stack.pop();
+        return topChar;
+    }    
+
+    protected void push(char c) {
+        if (c != 0) {
+            m_stack.push(c);
+        }
+    }
 	
 	// dump the current machine state
 	public void traceState(OutputStreamWriter outStream) throws Exception {
