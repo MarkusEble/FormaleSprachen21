@@ -29,6 +29,26 @@ public abstract class StackMachine extends StateMachineBase {
         }
     }
 	
+    protected Character getStackTop() {
+        char topChar = m_stack.isEmpty() ? 0 : m_stack.lastElement();
+        return topChar;
+    }
+
+    protected boolean matchStackTop(String strToMatch) {
+      int stackSize = m_stack.size();
+      int strLen = strToMatch.length();
+      int stackStartOffset = stackSize - strLen;
+      if (stackStartOffset < 0) {
+          return false;
+      }
+      for (int i = 0; i != strLen; ++i) {
+          if (strToMatch.charAt(i) != m_stack.elementAt(stackStartOffset + i)) {
+              return false;
+          }
+      }
+      return true;
+    }
+
 	// dump the current machine state
 	public void traceState(OutputStreamWriter outStream) throws Exception {
 		super.traceState(outStream);
@@ -58,25 +78,6 @@ public abstract class StackMachine extends StateMachineBase {
 		for (int i = 5; i != 11; i++) {
 			outStream.write(' ');
 		}
-	}
-
-	protected Character getStackTop() {
-		return m_stack.elementAt(m_stack.size()-1);
-	}
-
-    protected boolean matchStackTop(String strToMatch) {
-      int stackSize = m_stack.size();
-      int strLen = strToMatch.length();
-      int stackStartOffset = stackSize - strLen;
-      if (stackStartOffset < 0) {
-          return false;
-      }
-      for (int i = 0; i != strLen; ++i) {
-          if (strToMatch.charAt(i) != m_stack.elementAt(stackStartOffset + i)) {
-              return false;
-          }
-      }
-      return true;
 	}
 
 }
