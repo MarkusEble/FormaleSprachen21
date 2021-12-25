@@ -26,7 +26,7 @@ public class StateMachineTableHexNumber extends compiler.StateMachine {
 		m_stateMap.put("leadingX", leadingX);
 
 		compiler.State firstDigit = new compiler.State("firstDigit");
-		firstDigit.addTransition('0', "number0");
+		firstDigit.addTransition('0', "nextDigit");
 		firstDigit.addTransition('1', "nextDigit");
 		firstDigit.addTransition('2', "nextDigit");
 		firstDigit.addTransition('3', "nextDigit");
@@ -64,4 +64,8 @@ public class StateMachineTableHexNumber extends compiler.StateMachine {
 		m_stateMap.put("nextDigit", nextDigit);
 	}
 
+    public String getName() {
+        return "HEXNUMBER";
+    }
+	
 }

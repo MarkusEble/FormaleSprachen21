@@ -47,4 +47,8 @@ public class StateMachineTableNumber extends compiler.StateMachine {
 		m_stateMap.put("nextDigit", nextDigit);
 	}
 
+	   public String getName() {
+	        return "NUMBER";
+	    }
+
 }

@@ -101,6 +101,10 @@ public abstract class StateMachineBase extends MachineBase implements Cloneable 
 		theClone.m_state = new String(m_state);
 		theClone.m_traceFinished = false;
 		return theClone;
-	}		
+	}
+	
+	public String getName() {
+	    return "<unnamed>";
+	}
 
 }
