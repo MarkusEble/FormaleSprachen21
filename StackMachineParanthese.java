@@ -23,7 +23,7 @@ public class StackMachineParanthese extends compiler.StackMachine {
          m_input.advance();
        }  else if (m_input.currentChar() == ')' ) {
          // if top of stack is "("
-         if (m_stack.lastElement() == '(') {
+         if (!m_stack.isEmpty() && m_stack.lastElement() == '(') {
            m_stack.pop();
            m_input.advance();
          } else {
